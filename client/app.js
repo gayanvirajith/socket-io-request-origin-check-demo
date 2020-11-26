@@ -6,8 +6,8 @@ let socket;
 let responseText;
 
 const connect = () => {
-  
-	let error = null;
+
+  let error = null;
 
   socket = io(socketUrl, {
     autoConnect: false,
@@ -15,22 +15,22 @@ const connect = () => {
 
   socket.on('connect', () => {
     console.log('Connected');
-		responseText.innerHTML = 'Connected';
+    responseText.innerHTML = 'Connected';
     connectButton.disabled = true;
     disconnectButton.disabled = false;
   });
 
   socket.on('disconnect', (reason) => {
     console.log(`Disconnected: ${error || reason}`);
-		responseText.innerHTML = `Disconnected: ${error || reason}`;
+    responseText.innerHTML = `Disconnected: ${error || reason}`;
     connectButton.disabled = false;
     disconnectButton.disabled = true;
     error = null;
   });
 
   socket.on("connect_error", () => {
-      console.error('Could not connect!')
-      responseText.innerHTML = `Could not connect`;
+    console.error('Could not connect!')
+    responseText.innerHTML = `Could not connect`;
   });
 
   socket.open();
@@ -45,4 +45,3 @@ document.addEventListener('DOMContentLoaded', () => {
   disconnectButton = document.getElementById('disconnect');
   responseText = document.getElementById('responseText')
 });
-

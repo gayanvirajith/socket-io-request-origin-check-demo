@@ -1,5 +1,7 @@
 const http = require('http');
-const { v4: uuidv4 } = require('uuid');
+const {
+  v4: uuidv4
+} = require('uuid');
 
 const server = http.createServer();
 const io = require("socket.io")(server, {
@@ -16,7 +18,7 @@ const PORT = process.env.PORT || 9000;
  * Custom session id creation
  */
 io.engine.generateId = () => {
-    return uuidv4();
+  return uuidv4();
 }
 
 /**
@@ -27,7 +29,7 @@ io.use((socket, next) => {
   const supportiveOrigin = process.env.SUPPORTED_ORIGIN || 'http://localhost:5000'
   if (handshakeData.headers.origin !== supportiveOrigin) {
     console.log('frontend origin: ' + handshakeData.headers.origin);
-	  console.log('supported origin: ' + supportiveOrigin);
+    console.log('supported origin: ' + supportiveOrigin);
     console.log('Not Authenticated');
     return next(new Error("Not Authenticated"));
   }
