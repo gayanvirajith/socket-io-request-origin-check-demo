@@ -1,6 +1,6 @@
 # Socket.io request origin validation
 
-This is a sample repository to demonstrate how to validate request origin server when 
+This is a sample repository to demonstrate how to validate request origin when 
 connecting to socket server. 
 
 ## How to install
